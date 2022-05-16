@@ -12,7 +12,7 @@ interface NoteDao {
     @Query("SELECT * FROM Notes_table WHERE id = :id")
     fun getNoteById(id : Int) : Note?
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(note: Note)
 
     @Update
